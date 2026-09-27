@@ -4,55 +4,110 @@
     "name": "Damp surveys",
     "icon": "report",
     "summary": "Inspection, moisture readings and a clear written report with photos.",
-    "href": "/damp-surveys/"
+    "href": "/damp-surveys/",
+    "description": "A thorough inspection to find out what's really causing the damp. We take moisture readings, check inside and out, and give you a clear written report with photos and plain-English recommendations.",
+    "signs": [
+      "Damp patches, tidemarks or peeling paint",
+      "A musty smell that won't go away",
+      "Mould that keeps coming back",
+      "You're letting, buying or selling and want a clear picture"
+    ]
   },
   {
     "id": "rising-damp",
     "name": "Rising damp and DPC",
     "icon": "wall",
     "summary": "Damp-proof course installation, including chemical DPC injection.",
-    "href": "/services/#rising-damp"
+    "href": "/services/#rising-damp",
+    "description": "Rising damp happens when moisture from the ground soaks up through a wall because the damp-proof course (DPC) has failed, been bridged or was never there. Once we've confirmed it really is rising damp, we can install a new DPC, including chemical DPC injection.",
+    "signs": [
+      "A tidemark low on the wall, usually up to about a metre",
+      "White, powdery salts on the wall surface",
+      "Rotting or stained skirting boards",
+      "Crumbling plaster near the floor"
+    ]
   },
   {
     "id": "penetrating-damp",
     "name": "Penetrating damp",
     "icon": "rain",
     "summary": "Tracing and fixing water getting in through walls, roofs and openings.",
-    "href": "/services/#penetrating-damp"
+    "href": "/services/#penetrating-damp",
+    "description": "Penetrating damp is water getting in from outside, through walls, roofs, windows, doors or leaking gutters. We trace where it's coming in and fix the cause, not just the stain.",
+    "signs": [
+      "Damp patches that grow after heavy rain",
+      "Damp at any height, often on outside walls",
+      "Damp around windows, doors or chimneys",
+      "Cracked render or missing pointing outside"
+    ]
   },
   {
     "id": "condensation-mould",
     "name": "Condensation and mould",
     "icon": "wind",
     "summary": "Diagnosis, mould treatment and ventilation improvements.",
-    "href": "/services/#condensation-mould"
+    "href": "/services/#condensation-mould",
+    "description": "Condensation is the most common cause of damp in UK homes. Moist air settles on cold surfaces and mould follows. We diagnose it, treat the mould, improve ventilation and give practical advice to stop it coming back.",
+    "signs": [
+      "Black mould in corners, behind furniture or around windows",
+      "Windows streaming with water in the morning",
+      "Musty smells, especially in bedrooms and bathrooms",
+      "Problems that get worse in winter"
+    ]
   },
   {
     "id": "basement-tanking",
     "name": "Basement and cellar tanking",
     "icon": "stairs",
     "summary": "Waterproofing below-ground rooms so they stay dry and usable.",
-    "href": "/services/#basement-tanking"
+    "href": "/services/#basement-tanking",
+    "description": "Tanking waterproofs below-ground rooms so they stay dry, whether you want better storage or a room you can actually use. We assess the space and recommend the right approach for it.",
+    "signs": [
+      "Damp or wet cellar walls",
+      "Puddles or standing water after rain",
+      "White salt deposits on brick or stone",
+      "A strong musty smell below ground"
+    ]
   },
   {
     "id": "timber-treatment",
     "name": "Timber treatment",
     "icon": "timber",
     "summary": "Treating woodworm, wet rot and dry rot.",
-    "href": "/services/#timber-treatment"
+    "href": "/services/#timber-treatment",
+    "description": "We identify and treat woodworm, wet rot and dry rot, and deal with the damp that caused the rot in the first place, so the problem doesn't return.",
+    "signs": [
+      "Small round holes and fine dust in timber",
+      "Soft, spongy or cracked wood",
+      "Fungal growth or white strands on timber or masonry",
+      "A damp, mushroom-like smell"
+    ]
   },
   {
     "id": "replastering",
     "name": "Replastering",
     "icon": "trowel",
     "summary": "Specialist replastering after damp treatment.",
-    "href": "/services/#replastering"
+    "href": "/services/#replastering",
+    "description": "After damp treatment, walls often need replastering with the right materials so salts and moisture don't spoil the finish. We leave walls sound and ready to decorate.",
+    "signs": [
+      "Plaster that sounds hollow or is coming away",
+      "Salt-stained plaster that won't hold paint",
+      "Walls that need making good after a new DPC"
+    ]
   },
   {
     "id": "exterior-repairs",
     "name": "Exterior repairs",
     "icon": "house",
     "summary": "Guttering, drainpipes, rendering, pointing and other above-ground repairs.",
-    "href": "/services/#exterior-repairs"
+    "href": "/services/#exterior-repairs",
+    "description": "Many damp problems start outside. We carry out above-ground repairs, including damp-proof courses, drainpipes and guttering, rendering and pointing, to stop water getting in.",
+    "signs": [
+      "Overflowing or leaking gutters and downpipes",
+      "Cracked, missing or crumbling pointing",
+      "Cracked or blown render",
+      "Soil or paving piled high against outside walls"
+    ]
   }
 ]

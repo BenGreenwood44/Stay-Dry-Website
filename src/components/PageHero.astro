@@ -1,0 +1,13 @@
+---
+// Top section for inner pages. Buttons (optional) go in the default slot.
+// Usage: <PageHero eyebrow="Services" title="…" lead="…"><a class="btn …">…</a></PageHero>
+const { eyebrow = '', title, lead = '' } = Astro.props;
+---
+<section class="page-hero">
+  <div class="container">
+    {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+    <h1>{title}</h1>
+    {lead && <p class="lead">{lead}</p>}
+    {Astro.slots.has('default') && <div class="btn-row"><slot /></div>}
+  </div>
+</section>

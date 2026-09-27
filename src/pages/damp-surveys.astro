@@ -1,0 +1,186 @@
+---
+// Damp Surveys page (Stage 3, round 1). Text is a draft for Stay Dry to check.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import site from '../data/site.json';
+
+const faqs = [
+  {
+    q: 'How much does a damp survey cost?',
+    a: "Our surveys are deliberately low-cost. Get in touch with the address and a little about the problem and we'll give you a price before we book. Outside our main area we add a charge for the extra travel time.",
+  },
+  {
+    q: 'How long does the survey take?',
+    a: 'It depends on the size of the property and the problem, but most surveys take about [TO CONFIRM: typical time] on site.',
+  },
+  {
+    q: 'How quickly can you come out?',
+    a: 'We aim to respond quickly, especially for landlords working to deadlines. [TO CONFIRM: typical wait for an appointment]',
+  },
+  {
+    q: 'When will I get the report?',
+    a: "You'll get your written report [TO CONFIRM: typical turnaround] after the visit, by email.",
+  },
+  {
+    q: 'Will you try to sell me treatment?',
+    a: "No. We find the real cause first and tell you plainly what, if anything, needs doing. If work isn't needed, we'll say so.",
+  },
+  {
+    q: 'Does someone need to be at the property?',
+    a: 'Yes, we need access to the rooms affected and, ideally, the outside of the building. For rented properties we can arrange access directly with your tenant.',
+  },
+];
+---
+<BaseLayout
+  title="Damp Surveys near Skipton | Low-Cost, Clear Written Reports | Stay Dry"
+  description="Low-cost damp surveys across East Lancashire and North Yorkshire. Moisture readings, the real cause found, and a clear written report with photos. Book with Stay Dry, near Skipton."
+>
+  <PageHero
+    eyebrow="Damp surveys"
+    title="Low-cost damp surveys with a clear written report"
+    lead="Find out what's really causing your damp before you spend money on treatment. We inspect, take readings and tell you straight what needs doing."
+  >
+    <a class="btn btn-primary btn-lg" href="/contact/?service=damp-surveys">Book a survey <Icon name="arrow" /></a>
+    <a class="btn btn-whatsapp btn-lg" href={site.whatsappHref} target="_blank" rel="noopener"><Icon name="chat" />WhatsApp us</a>
+  </PageHero>
+
+  <!-- What's included -->
+  <section class="section">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">What's included</span>
+        <h2>A proper look, not a quick guess</h2>
+        <p class="lead">Damp is easy to misdiagnose. Our surveys look at the whole picture, inside and out, so the recommendation fixes the actual cause.</p>
+      </div>
+      <ul class="check-list check-list--lg">
+        <li><Icon name="check" /><span><strong>Inspection inside and out</strong> of the affected areas and the likely sources</span></li>
+        <li><Icon name="check" /><span><strong>Moisture readings</strong> to measure how damp the walls and timber really are</span></li>
+        <li><Icon name="check" /><span><strong>Outside checks</strong> of gutters, pointing, render and ground levels</span></li>
+        <li><Icon name="check" /><span><strong>A clear diagnosis</strong>: rising damp, penetrating damp, condensation or something else</span></li>
+        <li><Icon name="check" /><span><strong>A written report with photos</strong> and plain-English recommendations</span></li>
+        <li><Icon name="check" /><span><strong>Honest advice</strong>, including when no work is needed</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- The report -->
+  <section class="section section--tint">
+    <div class="container split split--reverse">
+      <div>
+        <span class="eyebrow">Your report</span>
+        <h2>Evidence you can act on</h2>
+        <p>Every survey comes with a written report you can keep, share with your tenant or letting agent, or hand to a contractor.</p>
+        <ul class="check-list">
+          <li><Icon name="check" />Photos of each problem area</li>
+          <li><Icon name="check" />Moisture readings and where they were taken</li>
+          <li><Icon name="check" />The cause, explained in plain English</li>
+          <li><Icon name="check" />Clear recommendations, in order of priority</li>
+        </ul>
+        <p class="note">The example shows the kind of information included. It isn't a real report.</p>
+      </div>
+      <div class="report-mock" role="img" aria-label="Example layout of a Stay Dry damp survey report">
+        <div class="report-mock-head">
+          <span class="report-mock-title"><Icon name="report" />Damp survey report</span>
+          <span class="placeholder">[TO CONFIRM: sample report]</span>
+        </div>
+        <div class="report-mock-photos">
+          <div class="photo-ph"><Icon name="camera" /><span>Photo</span></div>
+          <div class="photo-ph"><Icon name="camera" /><span>Photo</span></div>
+        </div>
+        <div class="report-mock-rows">
+          <div><span>Location</span><span>Rear bedroom, external wall</span></div>
+          <div><span>Moisture reading</span><span>High at low level</span></div>
+          <div><span>Likely cause</span><span>Blocked gutter above</span></div>
+          <div><span>Recommendation</span><span>Clear and repair gutter, allow wall to dry</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Who it's for</span>
+        <h2>A survey that suits your situation</h2>
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <span class="icon-badge"><Icon name="building" /></span>
+          <h3>Landlords and letting agents</h3>
+          <p>Quick appointments, tenant access arranged for you, and a report you can keep on file for each property.</p>
+        </article>
+        <article class="card">
+          <span class="icon-badge"><Icon name="shield" /></span>
+          <h3>Housing associations</h3>
+          <p>Evidence-grade reports with photos to support your damp and mould process and help you act promptly.</p>
+        </article>
+        <article class="card">
+          <span class="icon-badge"><Icon name="house" /></span>
+          <h3>Homeowners</h3>
+          <p>A plain-English explanation of what's going on and honest advice on whether you need any work at all.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Low cost -->
+  <section class="section section--tint">
+    <div class="container value-band">
+      <span class="icon-badge"><Icon name="tag" /></span>
+      <div>
+        <h2>Low-cost, with no hard sell</h2>
+        <p class="lead">We keep our surveys affordable because the right diagnosis saves you money. You'll know the price before we book, and there's no obligation to use us for any work.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to book -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">How to book</span>
+        <h2>Booking takes a couple of minutes</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3>Tell us about the problem</h3>
+          <p>Use the enquiry form, WhatsApp or call. Photos help us understand it before we visit.</p>
+        </li>
+        <li>
+          <h3>Agree a price and a time</h3>
+          <p>We'll confirm the cost and arrange a visit that suits you, or your tenant.</p>
+        </li>
+        <li>
+          <h3>Survey and report</h3>
+          <p>We carry out the survey and send your written report with photos and recommendations.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--tint">
+    <div class="container container--narrow">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Questions</span>
+        <h2>Damp survey FAQs</h2>
+      </div>
+      <div class="faq">
+        {faqs.map(({ q, a }) => {
+          const parts = a.split(/(\[TO CONFIRM[^\]]*\])/);
+          return (
+            <details>
+              <summary>{q}<Icon name="arrow" cls="faq-icon" /></summary>
+              <p>{parts.map((p) => (p.startsWith('[TO CONFIRM') ? <span class="placeholder">{p}</span> : p))}</p>
+            </details>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Ready to find out what's causing your damp?" />
+</BaseLayout>

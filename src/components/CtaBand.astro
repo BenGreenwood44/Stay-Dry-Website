@@ -1,0 +1,22 @@
+---
+// Closing call to action used at the bottom of inner pages.
+import Icon from './Icon.astro';
+import site from '../data/site.json';
+const {
+  title = 'Worried about damp or mould?',
+  lead = 'Book a low-cost survey and get honest advice from a local specialist.',
+} = Astro.props;
+---
+<section class="section section--dark cta">
+  <div class="container cta-inner">
+    <div>
+      <h2>{title}</h2>
+      <p class="lead">{lead}</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn-light btn-lg" href="/contact/">Book a survey <Icon name="arrow" /></a>
+      <a class="btn btn-whatsapp btn-lg" href={site.whatsappHref} target="_blank" rel="noopener"><Icon name="chat" />WhatsApp us</a>
+    </div>
+    <p class="cta-call">Or call <a href={site.phoneHref}>{site.phoneDisplay}</a></p>
+  </div>
+</section>

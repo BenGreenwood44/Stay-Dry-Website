@@ -1,0 +1,81 @@
+---
+// Services page (Stage 3, round 1). All eight services come from src/data/services.json,
+// the same list the homepage uses. Text is a draft for Stay Dry to check.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import services from '../data/services.json';
+---
+<BaseLayout
+  title="Damp Proofing Services near Skipton | Rising Damp, Mould, Tanking | Stay Dry"
+  description="Damp surveys, rising damp and DPC, penetrating damp, condensation and mould, cellar tanking, timber treatment, replastering and exterior repairs across East Lancashire and North Yorkshire."
+>
+  <PageHero
+    eyebrow="Our services"
+    title="Damp proofing services, inside and out"
+    lead="From finding the cause to fixing it for good. Every job starts with an honest diagnosis, so you only pay for work that's actually needed."
+  >
+    <a class="btn btn-primary btn-lg" href="/contact/">Book a survey <Icon name="arrow" /></a>
+  </PageHero>
+
+  <!-- Jump links -->
+  <!-- On small screens the row scrolls sideways, with arrow buttons instead of a scrollbar. -->
+  <nav class="jump-links" aria-label="Jump to a service" data-jump>
+    <div class="container jump-inner">
+      <button class="jump-arrow jump-arrow--prev" type="button" aria-label="Show earlier services" data-jump-prev><Icon name="arrow" /></button>
+      <ul data-jump-track>
+        {services.map((s) => (
+          <li><a href={`#${s.id}`}><Icon name={s.icon} />{s.name}</a></li>
+        ))}
+      </ul>
+      <button class="jump-arrow jump-arrow--next" type="button" aria-label="Show more services" data-jump-next><Icon name="arrow" /></button>
+    </div>
+  </nav>
+
+  <!-- One section per service -->
+  {services.map((s, i) => (
+    <section id={s.id} class:list={['section', 'service-block', { 'section--tint': i % 2 === 1 }]}>
+      <div class="container split">
+        <div>
+          <span class="icon-badge"><Icon name={s.icon} /></span>
+          <h2>{s.name}</h2>
+          <p class="lead">{s.description}</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href={`/contact/?service=${s.id}`} aria-label={`Enquire about ${s.name}`}>Enquire now <Icon name="arrow" /></a>
+            {s.id === 'damp-surveys' && <a class="btn btn-secondary" href="/damp-surveys/">More about surveys</a>}
+          </div>
+        </div>
+        <div class="signs">
+          <h3>Signs to look for</h3>
+          <ul class="check-list">
+            {s.signs.map((sign) => <li><Icon name="check" />{sign}</li>)}
+          </ul>
+          <p class="note">Not sure what you're looking at? A survey will tell you.</p>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <CtaBand title="Not sure which service you need?" lead="Start with a low-cost survey. We'll find the cause and tell you honestly what needs doing." />
+</BaseLayout>
+
+<script>
+  // Show the left/right arrows only when there are more links hidden that way.
+  const nav = document.querySelector('[data-jump]');
+  const track = nav?.querySelector('[data-jump-track]');
+  if (nav && track) {
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth;
+      nav.toggleAttribute('data-can-prev', track.scrollLeft > 4);
+      nav.toggleAttribute('data-can-next', track.scrollLeft < max - 4);
+    };
+    const smooth = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+    const move = (dir) => track.scrollBy({ left: dir * track.clientWidth * 0.7, behavior: smooth });
+    nav.querySelector('[data-jump-prev]')?.addEventListener('click', () => move(-1));
+    nav.querySelector('[data-jump-next]')?.addEventListener('click', () => move(1));
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+</script>
