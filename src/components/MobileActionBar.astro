@@ -1,0 +1,9 @@
+---
+import Icon from './Icon.astro';
+import site from '../data/site.json';
+---
+<nav class="action-bar" aria-label="Quick contact">
+  <a href={site.phoneHref}><Icon name="phone" />Call</a>
+  <a href={site.whatsappHref} target="_blank" rel="noopener"><Icon name="chat" />WhatsApp</a>
+  <a class="is-primary" href="/contact/"><Icon name="mail" />Enquire</a>
+</nav>

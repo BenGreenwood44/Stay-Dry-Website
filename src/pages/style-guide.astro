@@ -1,0 +1,109 @@
+---
+// Internal design reference. Hidden from search engines; delete or keep before launch.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+---
+<BaseLayout title="Style guide | Stay Dry" robots="noindex, nofollow">
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Design system</span>
+      <h1>Stay Dry style guide</h1>
+      <p class="lead">The building blocks every page is made from: colours, type, buttons and common components.</p>
+
+      <div class="sg-block">
+        <p class="sg-label">Brand colours</p>
+        <div class="sg-swatches">
+          <div class="sg-swatch"><div style="background:#5F00D1"></div><p><strong>Brand purple</strong>#5F00D1 · buttons, links</p></div>
+          <div class="sg-swatch"><div style="background:#7A1BEA"></div><p><strong>Light purple</strong>#7A1BEA · accents</p></div>
+          <div class="sg-swatch"><div style="background:#0A0028"></div><p><strong>Deep purple</strong>#0A0028 · headings, dark sections</p></div>
+          <div class="sg-swatch"><div style="background:#F4EEFF"></div><p><strong>Lilac tint</strong>#F4EEFF · soft backgrounds</p></div>
+          <div class="sg-swatch"><div style="background:#FAF7FF"></div><p><strong>Lilac wash</strong>#FAF7FF · section backgrounds</p></div>
+          <div class="sg-swatch"><div style="background:#4A4458"></div><p><strong>Muted text</strong>#4A4458 · supporting copy</p></div>
+        </div>
+      </div>
+
+      <div class="sg-block">
+        <p class="sg-label">Typography · Poppins headings, system font body</p>
+        <h1>Honest damp advice from local specialists</h1>
+        <h2>Low-cost damp surveys</h2>
+        <h3>Rising damp and damp-proof courses</h3>
+        <h4>What's included in your report</h4>
+        <p class="lead">Lead paragraph: a short, friendly summary that introduces a section in plain English.</p>
+        <p>Body text: we find the real cause of damp before recommending any work, and we'll tell you straight if treatment isn't needed. <a href="#">Text links look like this.</a></p>
+      </div>
+
+      <div class="sg-block">
+        <p class="sg-label">Buttons</p>
+        <div class="btn-row">
+          <a class="btn btn-primary btn-lg" href="#">Book a survey <Icon name="arrow" /></a>
+          <a class="btn btn-primary" href="#">Book a survey</a>
+          <a class="btn btn-secondary" href="#">Our services</a>
+          <a class="btn btn-outline" href="#">Learn more</a>
+          <a class="btn btn-whatsapp" href="#"><Icon name="chat" />WhatsApp us</a>
+          <a class="btn btn-primary btn-sm" href="#">Small button</a>
+        </div>
+        <div class="sg-dark" style="margin-top:1.25rem">
+          <div class="btn-row">
+            <a class="btn btn-light" href="#">Button on dark</a>
+            <a class="btn btn-whatsapp" href="#"><Icon name="chat" />WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-block">
+        <p class="sg-label">Cards, badges and lists</p>
+        <div class="grid grid-3">
+          <article class="card">
+            <span class="icon-badge"><Icon name="report" /></span>
+            <h3>Damp surveys</h3>
+            <p>A thorough inspection with moisture readings and a clear written report with photos.</p>
+          </article>
+          <article class="card">
+            <span class="icon-badge"><Icon name="clock" /></span>
+            <h3>Quick response</h3>
+            <p>Fast appointments to help landlords act within the timescales tenants and regulators expect.</p>
+          </article>
+          <article class="card">
+            <span class="icon-badge"><Icon name="shield" /></span>
+            <h3>Vetted</h3>
+            <p>Members of the Federation of Damp <span class="placeholder">[TO CONFIRM]</span>, with 35+ years of experience.</p>
+          </article>
+        </div>
+        <div class="grid grid-2" style="margin-top:2rem">
+          <ul class="check-list">
+            <li><Icon name="check" />Low-cost surveys</li>
+            <li><Icon name="check" />Straight-talking advice</li>
+            <li><Icon name="check" />Friendly, reliable service</li>
+          </ul>
+          <div class="btn-row" style="align-content:flex-start">
+            <span class="pill"><Icon name="shield" />Vetted</span>
+            <span class="pill"><Icon name="clock" />Quick response</span>
+            <span class="pill"><Icon name="pin" />Skipton-based</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-block">
+        <p class="sg-label">Form fields</p>
+        <div class="grid grid-2">
+          <div>
+            <div class="field">
+              <label for="sg-name">Your name</label>
+              <input class="input" id="sg-name" type="text" placeholder="Jane Smith" />
+            </div>
+            <div class="field">
+              <label for="sg-role">I am a…</label>
+              <select class="select" id="sg-role"><option>Landlord or letting agent</option><option>Housing association</option><option>Homeowner</option></select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="sg-msg">Describe the problem</label>
+            <p class="hint">For example: black mould in the back bedroom, tidemark on the lounge wall.</p>
+            <textarea class="textarea" id="sg-msg"></textarea>
+          </div>
+        </div>
+        <p><span class="placeholder">[TO CONFIRM]</span> Placeholders like this mark details still to be confirmed.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

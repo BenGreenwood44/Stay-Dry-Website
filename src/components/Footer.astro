@@ -1,0 +1,53 @@
+---
+import Icon from './Icon.astro';
+import site from '../data/site.json';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <picture>
+          <source srcset="/images/logo-full-800.webp" type="image/webp" />
+          <img src="/images/logo-full-800.png" alt="Stay Dry – damp surveying and damp proofing" width="800" height="824" loading="lazy" />
+        </picture>
+        <p>Honest damp advice and lasting repairs from local specialists with {site.experience} of experience.</p>
+        <p class="accredit"><Icon name="shield" /><span>{site.accreditation}</span></p>
+      </div>
+
+      <div>
+        <p class="footer-title">Explore</p>
+        <ul class="footer-list">
+          <li><a href="/damp-surveys/">Damp Surveys</a></li>
+          <li><a href="/services/">Services</a></li>
+          <li><a href="/landlords/">Landlords &amp; Housing Providers</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer-title">Areas we cover</p>
+        <p>Based near Skipton, we mainly cover East Lancashire and North Yorkshire, including nearby Keighley and Bradford. Towns include {site.areas}. Further afield? We're happy to travel. We just add a charge for the extra travel time.</p>
+      </div>
+
+      <div>
+        <p class="footer-title">Get in touch</p>
+        <ul class="footer-list footer-contact">
+          <li><Icon name="phone" /><a href={site.phoneHref}>{site.phoneDisplay}</a></li>
+          <li><Icon name="chat" /><a href={site.whatsappHref} target="_blank" rel="noopener">WhatsApp us</a></li>
+          <li><Icon name="mail" /><a href={site.emailHref}>{site.email}</a></li>
+          <li><Icon name="pin" /><span>{site.base}</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {year} Stay Dry. All rights reserved.</p>
+      <ul>
+        <li><a href="/privacy/">Privacy notice</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
