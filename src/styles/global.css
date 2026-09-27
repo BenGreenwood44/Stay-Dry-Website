@@ -567,6 +567,10 @@ a:hover { color: var(--purple-dark); text-decoration-thickness: 2px; }
 .signs h3 { font-size: var(--step-1); }
 .signs .check-list { margin-bottom: var(--space-4); }
 
+/* 13. About page (Stage 3, round 2) -------------------------------------- */
+.photo-ph--portrait { aspect-ratio: 4 / 5; border-radius: var(--radius-lg); max-width: 460px; width: 100%; }
+@media (max-width: 899px) { .photo-ph--portrait { aspect-ratio: 16 / 10; max-width: none; } }
+
 /* Motion preferences */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

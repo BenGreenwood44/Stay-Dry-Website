@@ -1,0 +1,113 @@
+---
+// Landlords & Housing Providers page (Stage 3, round 2). Text is a draft for Stay Dry to check.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import site from '../data/site.json';
+---
+<BaseLayout
+  title="Damp Surveys for Landlords & Housing Associations | Stay Dry, Skipton"
+  description="Quick damp and mould surveys for landlords, letting agents and housing associations across East Lancashire and North Yorkshire. Evidence-grade reports with photos, tenant access arranged."
+>
+  <PageHero
+    eyebrow="Landlords & housing providers"
+    title="Damp and mould surveys for landlords and housing providers"
+    lead="Quick appointments, clear reports with photos, and one person to deal with for every property."
+  >
+    <a class="btn btn-primary btn-lg" href="/contact/?role=landlord">Book a survey <Icon name="arrow" /></a>
+    <a class="btn btn-whatsapp btn-lg" href={site.whatsappHref} target="_blank" rel="noopener"><Icon name="chat" />WhatsApp us</a>
+  </PageHero>
+
+  <!-- Why landlords use Stay Dry -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Why landlords use Stay Dry</span>
+        <h2>Built around how landlords work</h2>
+        <p class="lead">When a tenant reports damp or mould, you need someone who turns up quickly, finds the cause and gives you something in writing.</p>
+      </div>
+      <div class="grid grid-4">
+        <article class="card">
+          <span class="icon-badge"><Icon name="clock" /></span>
+          <h3>Quick response</h3>
+          <p>Fast appointments, so you can act on reports of damp and mould without delay.</p>
+        </article>
+        <article class="card">
+          <span class="icon-badge"><Icon name="report" /></span>
+          <h3>Evidence-grade reports</h3>
+          <p>Photos, moisture readings, the cause and clear recommendations, ready to keep on file.</p>
+        </article>
+        <article class="card">
+          <span class="icon-badge"><Icon name="house" /></span>
+          <h3>Tenant access arranged</h3>
+          <p>Give us your tenant's details and we'll arrange a time with them directly.</p>
+        </article>
+        <article class="card">
+          <span class="icon-badge"><Icon name="phone" /></span>
+          <h3>One point of contact</h3>
+          <p>You deal with {site.owner} directly, from the first call to the finished job.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awaab's Law -->
+  <section class="section section--tint">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">Awaab's Law</span>
+        <h2>Helping you act promptly on damp and mould</h2>
+        <p class="lead">Since October 2025, Awaab's Law has required social landlords in England to investigate reported damp and mould hazards, and make serious hazards safe, within strict timescales. The government has said it plans to extend similar rules to private rented homes.</p>
+        <p class="note">We're damp specialists, not legal advisers. Check the current rules and guidance for your own obligations. <span class="placeholder">[TO CONFIRM: check this wording before launch]</span></p>
+      </div>
+      <div class="signs">
+        <h3>How a Stay Dry survey helps</h3>
+        <ul class="check-list">
+          <li><Icon name="check" />A quick visit once a problem is reported</li>
+          <li><Icon name="check" />The cause identified, not just the symptoms</li>
+          <li><Icon name="check" />Photos and moisture readings for your records</li>
+          <li><Icon name="check" />Clear, prioritised recommendations for any work needed</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- How we work with you -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">How it works</span>
+        <h2>From tenant report to written findings</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3>Send us the details</h3>
+          <p>The property address, your tenant's contact details and any photos they've sent you.</p>
+        </li>
+        <li>
+          <h3>We arrange access and survey</h3>
+          <p>We book a time with your tenant, inspect the property and find the cause.</p>
+        </li>
+        <li>
+          <h3>Report and next steps</h3>
+          <p>You get a written report with photos <span class="placeholder">[TO CONFIRM: turnaround]</span>, plus a quote for any work needed.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Several properties -->
+  <section class="section section--tint">
+    <div class="container value-band">
+      <span class="icon-badge"><Icon name="building" /></span>
+      <div>
+        <h2>One rental or a whole portfolio</h2>
+        <p class="lead">Whether you have one property or many, you'll always deal with the same person. No call centres and no being passed around, just straight answers and a report for each property.</p>
+        <p class="note"><span class="placeholder">[TO CONFIRM: any housing associations or letting agents we can name, with permission]</span></p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Need a survey for a rental property?" lead="Send the address and your tenant's details, and we'll take it from there." />
+</BaseLayout>

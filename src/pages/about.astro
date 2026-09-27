@@ -1,0 +1,108 @@
+---
+// About page (Stage 3, round 2). Text is a draft for Stay Dry to check.
+// Stay Dry is essentially one person: Sean Howes (site.owner).
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import site from '../data/site.json';
+
+const firstName = site.owner.split(' ')[0];
+---
+<BaseLayout
+  title={`About Stay Dry | ${site.owner}, Damp Specialist near Skipton`}
+  description={`Stay Dry is ${site.owner}, a local damp specialist near Skipton with ${site.experience} of experience. Honest advice, low-cost surveys and a personal service across East Lancashire and North Yorkshire.`}
+>
+  <PageHero
+    eyebrow="About Stay Dry"
+    title={`Meet ${site.owner}`}
+    lead={`Stay Dry is ${firstName}: a local damp specialist with ${site.experience} of hands-on experience, based near Skipton.`}
+  >
+    <a class="btn btn-primary btn-lg" href="/contact/">Get in touch <Icon name="arrow" /></a>
+  </PageHero>
+
+  <!-- Story -->
+  <section class="section">
+    <div class="container split">
+      <div class="photo-ph photo-ph--portrait" role="img" aria-label={`Photo placeholder: ${site.owner}`}>
+        <Icon name="camera" /><span>Photo of {firstName} <span class="placeholder">[TO CONFIRM]</span></span>
+      </div>
+      <div>
+        <span class="eyebrow">The Stay Dry story</span>
+        <h2>One person, from first call to finished job</h2>
+        <p class="lead">When you contact Stay Dry, you deal with {firstName}. He does the survey, explains what he's found and looks after any work that's needed.</p>
+        <p><span class="placeholder">[TO CONFIRM: how {firstName} got started in damp proofing, and when Stay Dry began]</span></p>
+        <p>After {site.experience} in the trade, {firstName} has seen every kind of damp problem in local homes, from Yorkshire stone cottages to modern estates. That experience means a quicker, more accurate diagnosis, and no paying for work you don't need.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key facts -->
+  <section class="section section--tint">
+    <div class="container">
+      <div class="grid grid-3">
+        <article class="card">
+          <span class="icon-badge"><Icon name="award" /></span>
+          <h3>{site.experience} experience</h3>
+          <p>Decades of hands-on damp surveying and damp proofing.</p>
+        </article>
+        <article class="card">
+          <span class="icon-badge"><Icon name="shield" /></span>
+          <h3>Vetted member</h3>
+          <p>A vetted member of the Federation of Damp.</p>
+        </article>
+        <article class="card">
+          <span class="icon-badge"><Icon name="pin" /></span>
+          <h3>Local to Skipton</h3>
+          <p>Covering East Lancashire and North Yorkshire, including nearby Keighley and Bradford.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Approach -->
+  <section class="section">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">How {firstName} works</span>
+        <h2>Straight-talking and honest</h2>
+        <p class="lead">Damp is one of the most misdiagnosed problems in UK homes, and the wrong treatment is expensive. {firstName}'s approach is simple.</p>
+      </div>
+      <ul class="check-list check-list--lg">
+        <li><Icon name="check" /><span><strong>Find the real cause first</strong>, before recommending anything</span></li>
+        <li><Icon name="check" /><span><strong>Explain it in plain English</strong>, with no jargon or scare tactics</span></li>
+        <li><Icon name="check" /><span><strong>Tell you if work isn't needed</strong>, even when that means no job</span></li>
+        <li><Icon name="check" /><span><strong>Keep surveys low-cost</strong>, so getting the right answer is affordable</span></li>
+        <li><Icon name="check" /><span><strong>Respond quickly</strong> and turn up when agreed</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Federation of Damp -->
+  <section class="section section--tint">
+    <div class="container value-band">
+      <span class="icon-badge"><Icon name="shield" /></span>
+      <div>
+        <h2>Vetted member of the Federation of Damp</h2>
+        <p class="lead">The Federation of Damp is a UK body that trains, certifies and vets damp, mould and waterproofing specialists, and keeps a public register of its members.</p>
+        <p class="note">
+          <span class="placeholder">[TO CONFIRM: membership number, link to our register listing, member badge]</span>
+          · <a href="https://federationofdamp.co.uk/" target="_blank" rel="noopener">federationofdamp.co.uk</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas -->
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Areas we cover</span>
+        <h2>Based near Skipton</h2>
+        <p class="lead">We mainly cover East Lancashire and North Yorkshire, including nearby Keighley and Bradford. Towns include {site.areas}. Further afield? We're happy to travel. We just add a charge for the extra travel time.</p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title={`Talk to ${firstName} about your damp problem`} lead="Book a low-cost survey, send a WhatsApp with photos or give him a call." />
+</BaseLayout>
