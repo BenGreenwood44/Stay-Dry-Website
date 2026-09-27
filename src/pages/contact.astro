@@ -7,6 +7,11 @@ import PageHero from '../components/PageHero.astro';
 import Icon from '../components/Icon.astro';
 import site from '../data/site.json';
 import services from '../data/services.json';
+
+// The form goes live once the Web3Forms access key is added to site.json ("web3formsKey").
+// The key is designed to be public, so it's safe in the page code.
+const formKey = site.web3formsKey;
+const formLive = Boolean(formKey);
 ---
 <BaseLayout
   title="Contact Stay Dry | Book a Damp Survey near Skipton"
@@ -25,8 +30,14 @@ import services from '../data/services.json';
         <h2>Send an enquiry</h2>
         <p class="note">Fields marked <span class="req" aria-hidden="true">*</span> are required.</p>
 
-        <form class="enquiry-form" id="enquiry-form" method="post" action="#" data-form-live="false" novalidate>
-          <!-- Stage 4: set action to the form service's address and data-form-live="true" -->
+        <form class="enquiry-form" id="enquiry-form" method="post" action={formLive ? 'https://api.web3forms.com/submit' : '#'} data-form-live={formLive ? 'true' : 'false'} novalidate>
+          {formLive && (
+            <>
+              <input type="hidden" name="access_key" value={formKey} />
+              <input type="hidden" name="subject" value="New website enquiry - Stay Dry" />
+              <input type="hidden" name="from_name" value="Stay Dry website" />
+            </>
+          )}
           <div class="form-row">
             <div class="field">
               <label for="f-name">Your name <span class="req" aria-hidden="true">*</span></label>
@@ -89,10 +100,10 @@ import services from '../data/services.json';
 
           <p class="photo-tip"><Icon name="camera" /><span>Got photos? Send them by <a href={site.whatsappHref} target="_blank" rel="noopener">WhatsApp</a> after you've sent this form.</span></p>
 
-          <!-- Spam trap: hidden from people, bots tend to fill it in -->
+          <!-- Spam trap (Web3Forms "botcheck"): hidden from people, bots tend to tick it -->
           <div class="hp" aria-hidden="true">
-            <label for="f-website">Leave this empty</label>
-            <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+            <label for="f-botcheck">Leave this unticked</label>
+            <input id="f-botcheck" name="botcheck" type="checkbox" tabindex="-1" autocomplete="off" />
           </div>
 
           <div class="field field--check">
@@ -100,9 +111,9 @@ import services from '../data/services.json';
             <label for="f-consent">I agree to Stay Dry using these details to reply to my enquiry, as explained in the <a href="/privacy/">privacy notice</a>. <span class="req" aria-hidden="true">*</span></label>
           </div>
 
-          <button class="btn btn-primary btn-lg" type="submit">Send enquiry <Icon name="arrow" /></button>
+          <button class="btn btn-primary btn-lg" type="submit" data-submit>Send enquiry <Icon name="arrow" /></button>
 
-          <div class="form-status" role="status" aria-live="polite" data-form-status hidden></div>
+          <div class="form-status" role="status" aria-live="polite" tabindex="-1" data-form-status hidden></div>
         </form>
       </div>
 
@@ -159,19 +170,52 @@ import services from '../data/services.json';
     preset('service');
     preset('role');
 
-    // Until the form service is connected (Stage 4), don't try to send anything.
     const status = form.querySelector<HTMLElement>('[data-form-status]');
-    form.addEventListener('submit', (event) => {
-      if (form.dataset.formLive === 'true') return;
+    const button = form.querySelector<HTMLButtonElement>('[data-submit]');
+    const showStatus = (kind: 'info' | 'success' | 'error', html: string) => {
+      if (!status) return;
+      status.hidden = false;
+      status.className = `form-status form-status--${kind}`;
+      status.innerHTML = html;
+      status.focus();
+    };
+    const fallback = 'Please call or WhatsApp us instead.';
+
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
-      if (status) {
-        status.hidden = false;
-        status.innerHTML =
-          '<strong>Online enquiries aren\'t switched on yet.</strong> Please call or WhatsApp us for now. Your details haven\'t been sent anywhere.';
+
+      // Not connected yet (no Web3Forms key in site.json): send nothing.
+      if (form.dataset.formLive !== 'true') {
+        showStatus('info', `<strong>Online enquiries aren't switched on yet.</strong> ${fallback} Your details haven't been sent anywhere.`);
+        return;
+      }
+
+      // Send readable names (e.g. "Rising damp and DPC") rather than internal codes.
+      const data = new FormData(form);
+      for (const name of ['role', 'service']) {
+        const select = form.elements.namedItem(name);
+        if (select instanceof HTMLSelectElement) data.set(name, select.selectedOptions[0]?.text ?? '');
+      }
+
+      const label = button?.innerHTML ?? '';
+      if (button) { button.disabled = true; button.textContent = 'Sending…'; }
+      try {
+        const response = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+        const result = await response.json().catch(() => ({}));
+        if (response.ok && result.success) {
+          form.reset();
+          showStatus('success', "<strong>Thanks, your enquiry has been sent.</strong> We'll be in touch soon. Got photos? Send them by WhatsApp.");
+        } else {
+          showStatus('error', `<strong>Sorry, your enquiry didn't send.</strong> ${fallback}`);
+        }
+      } catch {
+        showStatus('error', `<strong>Sorry, your enquiry didn't send.</strong> Please check your connection, or call or WhatsApp us instead.`);
+      } finally {
+        if (button) { button.disabled = false; button.innerHTML = label; }
       }
     });
   }

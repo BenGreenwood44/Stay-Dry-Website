@@ -601,6 +601,10 @@ a:hover { color: var(--purple-dark); text-decoration-thickness: 2px; }
   background: #FFF4CC; color: #5C4400; border: 1px solid #F0DC8C;
 }
 .form-status[hidden] { display: none; }
+.form-status--success { background: #E3F3EA; color: #14532D; border-color: #A7D7BC; }
+.form-status--error { background: #FDE8E8; color: #7F1D1D; border-color: #F3B4B4; }
+.form-status:focus { outline: none; }
+.enquiry-form button[disabled] { opacity: 0.7; cursor: wait; }
 .contact-aside { display: grid; gap: var(--space-5); }
 .contact-list { list-style: none; margin: var(--space-4) 0; padding: 0; display: grid; gap: var(--space-3); }
 .contact-method {
