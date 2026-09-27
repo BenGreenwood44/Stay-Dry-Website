@@ -1,0 +1,58 @@
+[
+  {
+    "id": "damp-surveys",
+    "name": "Damp surveys",
+    "icon": "report",
+    "summary": "Inspection, moisture readings and a clear written report with photos.",
+    "href": "/damp-surveys/"
+  },
+  {
+    "id": "rising-damp",
+    "name": "Rising damp and DPC",
+    "icon": "wall",
+    "summary": "Damp-proof course installation, including chemical DPC injection.",
+    "href": "/services/#rising-damp"
+  },
+  {
+    "id": "penetrating-damp",
+    "name": "Penetrating damp",
+    "icon": "rain",
+    "summary": "Tracing and fixing water getting in through walls, roofs and openings.",
+    "href": "/services/#penetrating-damp"
+  },
+  {
+    "id": "condensation-mould",
+    "name": "Condensation and mould",
+    "icon": "wind",
+    "summary": "Diagnosis, mould treatment and ventilation improvements.",
+    "href": "/services/#condensation-mould"
+  },
+  {
+    "id": "basement-tanking",
+    "name": "Basement and cellar tanking",
+    "icon": "stairs",
+    "summary": "Waterproofing below-ground rooms so they stay dry and usable.",
+    "href": "/services/#basement-tanking"
+  },
+  {
+    "id": "timber-treatment",
+    "name": "Timber treatment",
+    "icon": "timber",
+    "summary": "Treating woodworm, wet rot and dry rot.",
+    "href": "/services/#timber-treatment"
+  },
+  {
+    "id": "replastering",
+    "name": "Replastering",
+    "icon": "trowel",
+    "summary": "Specialist replastering after damp treatment.",
+    "href": "/services/#replastering"
+  },
+  {
+    "id": "exterior-repairs",
+    "name": "Exterior repairs",
+    "icon": "house",
+    "summary": "Guttering, drainpipes, rendering, pointing and other above-ground repairs.",
+    "href": "/services/#exterior-repairs"
+  }
+]

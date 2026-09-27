@@ -1,12 +1,229 @@
 ---
+// Homepage (Stage 2). Text is a draft for Stay Dry to check.
+// Anything marked [TO CONFIRM] is still to be supplied before launch.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import site from '../data/site.json';
+import services from '../data/services.json';
+
+// Split "text [TO CONFIRM ...]" so the placeholder part is highlighted.
+const [accreditText, accreditTodo] = site.accreditation.split(/\s*(?=\[)/);
+
+// "Skipton, Settle, … Clitheroe and the Yorkshire Dales" → ["Skipton", …, "Yorkshire Dales"]
+const towns = site.areas.replace(' and ', ', ').split(', ').map((t) => t.replace(/^the /, ''));
 ---
-<BaseLayout>
+<BaseLayout
+  title="Damp Surveys & Damp Proofing near Skipton | Stay Dry"
+  description="Honest damp advice from experienced local specialists. Fast, low-cost damp surveys and damp proofing across East Lancashire and North Yorkshire, from Stay Dry near Skipton."
+>
+  <!-- 1. Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Damp surveys &amp; damp proofing near Skipton</span>
+        <h1>Honest damp advice from experienced local specialists</h1>
+        <p class="lead">Fast, low-cost damp surveys with a clear written report. For landlords, housing providers and homeowners across East Lancashire and North Yorkshire.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary btn-lg" href="/contact/">Book a survey <Icon name="arrow" /></a>
+          <a class="btn btn-whatsapp btn-lg" href={site.whatsappHref} target="_blank" rel="noopener"><Icon name="chat" />WhatsApp us</a>
+        </div>
+        <p class="hero-call">Or call <a href={site.phoneHref}>{site.phoneDisplay}</a></p>
+      </div>
+      <div class="hero-visual">
+        <picture>
+          <source srcset="/images/logo-full-800.webp" type="image/webp" />
+          <img src="/images/logo-full-800.png" alt="Stay Dry: damp surveying and damp proofing" width="800" height="824" fetchpriority="high" />
+        </picture>
+        <p class="hero-tag"><Icon name="award" /><span><strong>{site.experience}</strong> of hands-on experience</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Trust strip -->
+  <section class="trust-strip" aria-label="Why you can trust Stay Dry">
+    <ul class="container trust-list">
+      <li><Icon name="shield" /><span>{accreditText} {accreditTodo && <span class="placeholder">{accreditTodo}</span>}</span></li>
+      <li><Icon name="award" /><span>{site.experience} experience</span></li>
+      <li><Icon name="report" /><span>Written reports with photos</span></li>
+      <li><Icon name="pin" /><span>Local to Skipton</span></li>
+    </ul>
+  </section>
+
+  <!-- 3. Selling points -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Why Stay Dry</span>
+        <h2>Straight answers, not scare tactics</h2>
+        <p class="lead">Damp is often misdiagnosed, and the wrong treatment costs money. We find the real cause first, then tell you plainly what needs doing.</p>
+      </div>
+      <div class="grid grid-4">
+        <article class="card">
+          <span class="icon-badge"><Icon name="award" /></span>
+          <h3>{site.experience} experience</h3>
+          <p>Decades of hands-on damp work on every kind of local property, from stone terraces to modern semis.</p>
+        </article>
+        <article class="card">
+          <span class="icon-badge"><Icon name="tag" /></span>
+          <h3>Low-cost surveys</h3>
+          <p>An affordable survey with moisture readings and a clear written report, so you know exactly where you stand.</p>
+        </article>
+        <article class="card">
+          <span class="icon-badge"><Icon name="clock" /></span>
+          <h3>Quick response</h3>
+          <p>Fast appointments, so landlords and homeowners can act on damp and mould before it gets worse.</p>
+        </article>
+        <article class="card">
+          <span class="icon-badge"><Icon name="talk" /></span>
+          <h3>Straight-talking advice</h3>
+          <p>Plain English, no hard sell. If work isn't needed, we'll tell you.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Services overview -->
   <section class="section section--tint">
-    <div class="container stack">
-      <span class="eyebrow">Stage 1 preview</span>
-      <h1>The homepage arrives in stage 2</h1>
-      <p class="lead">This page is a placeholder so the header, footer and mobile contact bar can be reviewed in context. See the <a href="/style-guide/">style guide</a> for colours, type and buttons.</p>
+    <div class="container">
+      <div class="section-head section-head--split">
+        <div>
+          <span class="eyebrow">Our services</span>
+          <h2>Every kind of damp, inside and out</h2>
+        </div>
+        <a class="btn btn-outline" href="/services/">All services <Icon name="arrow" /></a>
+      </div>
+      <ul class="service-grid">
+        {services.map((s) => (
+          <li>
+            <a class="service-link" href={s.href}>
+              <span class="icon-badge"><Icon name={s.icon} /></span>
+              <span class="service-name">{s.name}</span>
+              <span class="service-text">{s.summary}</span>
+              <span class="service-more">Find out more <Icon name="arrow" /></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5. Split paths -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Who we help</span>
+        <h2>Help that fits the way you work</h2>
+      </div>
+      <div class="grid grid-2">
+        <article class="path-card">
+          <div class="photo-ph" role="img" aria-label="Photo placeholder: row of rented terraced houses">
+            <Icon name="camera" /><span>Stock photo: row of stone terraces <span class="placeholder">[TO CONFIRM]</span></span>
+          </div>
+          <div class="path-body">
+            <span class="eyebrow">Landlords &amp; housing providers</span>
+            <h3>Fast surveys and reports you can act on</h3>
+            <p>Awaab's Law now sets strict timescales for social landlords in England to investigate and deal with damp and mould. Our quick response and clear, photo-backed reports help you act promptly.</p>
+            <ul class="check-list">
+              <li><Icon name="check" />Evidence-grade written reports with photos</li>
+              <li><Icon name="check" />Quick appointments, with tenant access arranged</li>
+              <li><Icon name="check" />One point of contact for multiple properties</li>
+            </ul>
+            <a class="btn btn-primary" href="/landlords/">For landlords <Icon name="arrow" /></a>
+          </div>
+        </article>
+        <article class="path-card">
+          <div class="photo-ph" role="img" aria-label="Photo placeholder: family home interior">
+            <Icon name="camera" /><span>Stock photo: plastered living room <span class="placeholder">[TO CONFIRM]</span></span>
+          </div>
+          <div class="path-body">
+            <span class="eyebrow">Homeowners</span>
+            <h3>Find out what's really causing your damp</h3>
+            <p>Worried about a damp patch, mould or a musty smell? We'll find the cause, explain it in plain English and give you honest advice on what to do next.</p>
+            <ul class="check-list">
+              <li><Icon name="check" />A low-cost survey before any work</li>
+              <li><Icon name="check" />No jargon and no pressure</li>
+              <li><Icon name="check" />We'll tell you if work isn't needed</li>
+            </ul>
+            <a class="btn btn-primary" href="/damp-surveys/">About our surveys <Icon name="arrow" /></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. How it works -->
+  <section class="section section--tint">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">How it works</span>
+        <h2>Three simple steps</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3>Get in touch</h3>
+          <p>Use the enquiry form, WhatsApp or call. Photos of the problem help us understand it before we visit.</p>
+        </li>
+        <li>
+          <h3>We survey the property</h3>
+          <p>We inspect, take moisture readings and track down the real cause, not just the symptoms.</p>
+        </li>
+        <li>
+          <h3>Clear report, honest advice</h3>
+          <p>You get a written report with photos and plain-English recommendations. If work isn't needed, we'll say so.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 7. Areas covered -->
+  <section class="section">
+    <div class="container areas">
+      <div>
+        <span class="eyebrow">Areas we cover</span>
+        <h2>Local to Skipton, covering East Lancashire and North Yorkshire</h2>
+        <p class="lead">Based near Skipton, we mainly cover East Lancashire and North Yorkshire, including nearby Keighley and Bradford.</p>
+        <p>Further afield? We're happy to travel. We just add a charge for the extra travel time.</p>
+      </div>
+      <ul class="town-list" aria-label="Towns we cover">
+        {towns.map((t) => <li><Icon name="pin" />{t}</li>)}
+        <li><Icon name="pin" />Keighley</li>
+        <li><Icon name="pin" />Bradford</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 8. Reviews (placeholder) -->
+  <section class="section section--tint">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Reviews</span>
+        <h2>What our customers say</h2>
+        <p><span class="placeholder">[TO CONFIRM: real customer reviews, used with permission]</span></p>
+      </div>
+      <div class="grid grid-3">
+        {[1, 2, 3].map(() => (
+          <figure class="review">
+            <div class="review-stars" aria-hidden="true"><Icon name="star" /><Icon name="star" /><Icon name="star" /><Icon name="star" /><Icon name="star" /></div>
+            <blockquote><p><span class="placeholder">[TO CONFIRM]</span> Customer review goes here.</p></blockquote>
+            <figcaption>Customer name, town</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Closing call to action -->
+  <section class="section section--dark cta">
+    <div class="container cta-inner">
+      <div>
+        <h2>Worried about damp or mould?</h2>
+        <p class="lead">Book a low-cost survey and get honest advice from a local specialist.</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-light btn-lg" href="/contact/">Book a survey <Icon name="arrow" /></a>
+        <a class="btn btn-whatsapp btn-lg" href={site.whatsappHref} target="_blank" rel="noopener"><Icon name="chat" />WhatsApp us</a>
+      </div>
+      <p class="cta-call">Or call <a href={site.phoneHref}>{site.phoneDisplay}</a></p>
     </div>
   </section>
 </BaseLayout>
