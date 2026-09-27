@@ -7,3 +7,5 @@ dist/
 _backups/
 # Internal style guide: kept locally, not published
 src/pages/style-guide.astro
+# Handover guide: kept locally, not published
+HANDOVER.md
