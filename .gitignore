@@ -5,3 +5,5 @@ dist/
 .env.*
 .DS_Store
 _backups/
+# Internal style guide: kept locally, not published
+src/pages/style-guide.astro

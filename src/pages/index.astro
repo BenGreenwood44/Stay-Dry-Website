@@ -11,11 +11,34 @@ const [accreditText, accreditTodo] = site.accreditation.split(/\s*(?=\[)/);
 
 // "Skipton, Settle, … Clitheroe and the Yorkshire Dales" → ["Skipton", …, "Yorkshire Dales"]
 const towns = site.areas.replace(' and ', ', ').split(', ').map((t) => t.replace(/^the /, ''));
+
+// Business details for Google (structured data). Stay Dry has no street address:
+// it's a service-area business, so only the town and the areas served are given.
+const siteUrl = Astro.site?.href ?? 'https://stay-dry.uk/';
+const businessData = {
+  '@context': 'https://schema.org',
+  '@type': 'HomeAndConstructionBusiness',
+  name: site.name,
+  description: 'Damp surveys and damp proofing across East Lancashire and North Yorkshire, from a local specialist near Skipton.',
+  url: siteUrl,
+  telephone: site.phoneHref.replace('tel:', ''),
+  email: site.email,
+  logo: new URL('/images/logo-full-800.png', siteUrl).href,
+  image: new URL('/images/og-image.png', siteUrl).href,
+  address: { '@type': 'PostalAddress', addressLocality: 'Skipton', addressRegion: 'North Yorkshire', addressCountry: 'GB' },
+  areaServed: [
+    { '@type': 'AdministrativeArea', name: 'East Lancashire' },
+    { '@type': 'AdministrativeArea', name: 'North Yorkshire' },
+    ...[...towns, 'Keighley', 'Bradford'].map((name) => ({ '@type': 'Place', name })),
+  ],
+  knowsAbout: services.map((s) => s.name),
+};
 ---
 <BaseLayout
   title="Damp Surveys & Damp Proofing near Skipton | Stay Dry"
   description="Honest damp advice from experienced local specialists. Fast, low-cost damp surveys and damp proofing across East Lancashire and North Yorkshire, from Stay Dry near Skipton."
 >
+  <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(businessData)} />
   <!-- 1. Hero -->
   <section class="hero">
     <div class="container hero-grid">

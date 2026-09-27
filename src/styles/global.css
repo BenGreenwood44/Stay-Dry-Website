@@ -627,6 +627,18 @@ a:hover { color: var(--purple-dark); text-decoration-thickness: 2px; }
 .prose li { margin-bottom: var(--space-2); }
 .prose li::marker { color: var(--purple); }
 
+/* 15. Page not found (Stage 4) -------------------------------------------- */
+.not-found { padding-block: var(--space-8) var(--space-9); }
+.not-found-links { list-style: none; padding: 0; margin: var(--space-5) 0 var(--space-6); display: grid; gap: var(--space-2); }
+@media (min-width: 640px) { .not-found-links { grid-template-columns: 1fr 1fr; } }
+.not-found-links a {
+  display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border); border-radius: var(--radius); text-decoration: none; font-weight: 600; color: var(--ink);
+  transition: border-color .2s var(--ease), background-color .2s var(--ease);
+}
+.not-found-links a:hover { border-color: var(--lilac-300); background: var(--lilac-50); color: var(--purple); }
+.not-found-links svg { width: 18px; height: 18px; color: var(--purple); flex: none; }
+
 /* Motion preferences */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

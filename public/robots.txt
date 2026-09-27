@@ -1,0 +1,5 @@
+# Search engines are welcome to index the whole site.
+User-agent: *
+Allow: /
+
+Sitemap: https://stay-dry.uk/sitemap.xml

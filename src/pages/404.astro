@@ -1,0 +1,31 @@
+---
+// "Page not found" page. GitHub Pages shows this automatically for any missing address.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import site from '../data/site.json';
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/damp-surveys/', label: 'Damp surveys' },
+  { href: '/services/', label: 'Services' },
+  { href: '/landlords/', label: 'Landlords & housing providers' },
+  { href: '/about/', label: 'About' },
+  { href: '/contact/', label: 'Contact' },
+];
+---
+<BaseLayout title="Page not found | Stay Dry" description="Sorry, we couldn't find that page." robots="noindex">
+  <section class="section not-found">
+    <div class="container container--narrow">
+      <span class="eyebrow">Error 404</span>
+      <h1>Sorry, we can't find that page</h1>
+      <p class="lead">It may have moved, or the link may be wrong. Try one of these instead, or get in touch and we'll help.</p>
+      <ul class="not-found-links">
+        {links.map((l) => <li><a href={l.href}><Icon name="arrow" />{l.label}</a></li>)}
+      </ul>
+      <div class="btn-row">
+        <a class="btn btn-primary btn-lg" href="/contact/">Contact us <Icon name="arrow" /></a>
+        <a class="btn btn-whatsapp btn-lg" href={site.whatsappHref} target="_blank" rel="noopener"><Icon name="chat" />WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
