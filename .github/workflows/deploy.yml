@@ -1,0 +1,44 @@
+# Publishing file for the Stay Dry website.
+# Each time changes are pushed to the main branch on GitHub, this builds the
+# site (the same as `npm run build`) and publishes it on GitHub Pages.
+# It can also be run by hand from the repository's Actions tab.
+# Based on Astro's recommended setup: https://docs.astro.build/en/guides/deploy/github/
+# The custom domain is set in the repository's Settings > Pages, not here.
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Only what's needed: read the code, publish to Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Don't run two publishes at once; let one that has started finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the site files
+        uses: actions/checkout@v7
+      - name: Install, build and prepare the site
+        uses: withastro/action@v6
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
