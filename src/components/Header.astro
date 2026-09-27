@@ -59,8 +59,23 @@ import site from '../data/site.json';
     nav.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
   };
-  toggle?.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+  toggle?.addEventListener('click', (e) => {
+    const opening = toggle.getAttribute('aria-expanded') !== 'true';
+    setOpen(opening);
+    // Opened with the keyboard (Enter/Space)? Move straight to the first menu link.
+    if (opening && e.detail === 0) nav?.querySelector('a')?.focus();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape' || toggle?.getAttribute('aria-expanded') !== 'true') return;
+    setOpen(false);
+    toggle.focus(); // back to the menu button
+  });
+  // Close the menu when keyboard focus moves anywhere outside the menu and its button
+  document.addEventListener('focusin', (e) => {
+    if (toggle?.getAttribute('aria-expanded') !== 'true') return;
+    const t = e.target;
+    if (t instanceof Node && !nav?.contains(t) && t !== toggle) setOpen(false);
+  });
   nav?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
 
   // Subtle shadow once the page scrolls

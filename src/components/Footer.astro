@@ -8,8 +8,9 @@ const year = new Date().getFullYear();
     <div class="footer-grid">
       <div class="footer-brand">
         <picture>
-          <source srcset="/images/logo-full-800.webp" type="image/webp" />
-          <img src="/images/logo-full-800.png" alt="Stay Dry – damp surveying and damp proofing" width="800" height="824" loading="lazy" />
+          <!-- Shown at about 150px wide, so a 320px copy is plenty (sharp on high-resolution screens too) -->
+          <source srcset="/images/logo-full-320.webp" type="image/webp" />
+          <img src="/images/logo-full-320.png" alt="Stay Dry – damp surveying and damp proofing" width="320" height="330" loading="lazy" />
         </picture>
         <p>Honest damp advice and lasting repairs from local specialists with {site.experience} of experience.</p>
         <p class="accredit"><Icon name="shield" /><span>{site.accreditation}</span></p>

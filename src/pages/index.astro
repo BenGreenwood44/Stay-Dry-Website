@@ -54,7 +54,8 @@ const businessData = {
       </div>
       <div class="hero-visual">
         <picture>
-          <source srcset="/images/logo-full-800.webp" type="image/webp" />
+          <!-- The browser picks the smallest copy that looks sharp on the visitor's screen -->
+          <source srcset="/images/logo-full-480.webp 480w, /images/logo-full-800.webp 800w" sizes="(max-width: 959px) 340px, 440px" type="image/webp" />
           <img src="/images/logo-full-800.png" alt="Stay Dry: damp surveying and damp proofing" width="800" height="824" fetchpriority="high" />
         </picture>
         <p class="hero-tag"><Icon name="award" /><span><strong>{site.experience}</strong> of hands-on experience</span></p>
