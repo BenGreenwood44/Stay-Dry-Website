@@ -1,0 +1,93 @@
+---
+// Privacy notice (Stage 3, round 3). A plain-English starting draft, not legal advice.
+// Every [TO CONFIRM] must be filled in, and the whole notice checked, before launch.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import site from '../data/site.json';
+---
+<BaseLayout
+  title="Privacy Notice | Stay Dry"
+  description="How Stay Dry collects, uses and looks after your personal information when you get in touch."
+>
+  <PageHero
+    eyebrow="Privacy notice"
+    title="How we look after your information"
+    lead="This notice explains what information we collect when you contact Stay Dry, why we need it, and your rights."
+  />
+
+  <section class="section">
+    <div class="container container--narrow prose">
+      <p class="note">Last updated: <span class="placeholder">[TO CONFIRM: date]</span></p>
+
+      <h2>Who we are</h2>
+      <p>Stay Dry is run by {site.owner}, a damp surveying and damp proofing specialist based near Skipton. {site.owner} is responsible for how your information is used (the "data controller").</p>
+      <p>Business address: <span class="placeholder">[TO CONFIRM: business address]</span><br />
+        Email: <a href={site.emailHref}>{site.email}</a><br />
+        Phone: <a href={site.phoneHref}>{site.phoneDisplay}</a></p>
+
+      <h2>What information we collect</h2>
+      <p>When you send an enquiry through our website, call, email or message us on WhatsApp, we may collect:</p>
+      <ul>
+        <li>your name, phone number and email address</li>
+        <li>whether you're a landlord, housing association or homeowner</li>
+        <li>the address of the property and details of the problem</li>
+        <li>photos and messages you choose to send us</li>
+        <li>access details, such as a tenant's name and phone number if you're a landlord</li>
+      </ul>
+      <p>If you become a customer, we also keep survey reports, quotes, invoices and records of the work we carry out.</p>
+
+      <h2>How we use it</h2>
+      <ul>
+        <li>to reply to your enquiry and arrange a survey or visit</li>
+        <li>to carry out surveys, write reports and give quotes</li>
+        <li>to carry out and invoice any work you ask us to do</li>
+        <li>to keep the business and tax records we're required to keep</li>
+      </ul>
+      <p>We don't sell your information, and we don't use it for marketing.</p>
+
+      <h2>Our legal reasons for using it</h2>
+      <ul>
+        <li><strong>Taking steps at your request</strong> before a contract, and <strong>carrying out a contract</strong> with you: replying to enquiries, surveys, quotes and work.</li>
+        <li><strong>Legitimate interests</strong>: running the business, keeping records and contacting tenants to arrange access when a landlord asks us to.</li>
+        <li><strong>Legal obligation</strong>: keeping accounts and tax records.</li>
+      </ul>
+
+      <h2>Tenants' details</h2>
+      <p>If you're a landlord or letting agent and give us a tenant's details, please let your tenant know. We'll only use them to arrange access and carry out the survey or work.</p>
+
+      <h2>Who we share it with</h2>
+      <p>We only share information with services we use to run the business, and only as much as they need:</p>
+      <ul>
+        <li><strong>Website form service</strong>: passes website enquiries to our email. <span class="placeholder">[TO CONFIRM: provider, chosen at Stage 4]</span></li>
+        <li><strong>Google Workspace</strong>: our business email.</li>
+        <li><strong>WhatsApp</strong> (owned by Meta): if you choose to message us that way.</li>
+        <li><strong>GitHub Pages</strong>: hosts this website and may record technical information such as your IP address when you visit.</li>
+        <li>Our accountant, and anyone we're legally required to share information with.</li>
+      </ul>
+      <p>Some of these providers may store information outside the UK. Where they do, they use approved safeguards to protect it. <span class="placeholder">[TO CONFIRM: check each provider's terms]</span></p>
+
+      <h2>How long we keep it</h2>
+      <ul>
+        <li>Enquiries that don't go ahead: <span class="placeholder">[TO CONFIRM: e.g. 12 months]</span></li>
+        <li>Customer records, reports and invoices: <span class="placeholder">[TO CONFIRM: how long, in line with tax rules]</span></li>
+      </ul>
+
+      <h2>Cookies</h2>
+      <p>This website doesn't use advertising or tracking cookies. <span class="placeholder">[TO CONFIRM: update if analytics are added at Stage 4]</span></p>
+
+      <h2>Your rights</h2>
+      <p>You can ask us to:</p>
+      <ul>
+        <li>give you a copy of the information we hold about you</li>
+        <li>correct anything that's wrong</li>
+        <li>delete your information, where we don't need to keep it</li>
+        <li>stop or limit how we use it, or object to how we use it</li>
+        <li>send your information to you or another organisation in a common format</li>
+      </ul>
+      <p>To make a request, email <a href={site.emailHref}>{site.email}</a> or call {site.phoneDisplay}. We'll reply within one month.</p>
+
+      <h2>Complaints</h2>
+      <p>If you're unhappy with how we've handled your information, please tell us first so we can put it right. You can also complain to the Information Commissioner's Office (ICO), the UK's data protection regulator, at <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener">ico.org.uk/make-a-complaint</a> or on 0303 123 1113.</p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,178 @@
+---
+// Contact page (Stage 3, round 3). Text is a draft for Stay Dry to check.
+// The form is laid out but NOT connected yet: it gets wired to a free form service in Stage 4.
+// No photo uploads through the website: customers send photos by WhatsApp or email instead.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import site from '../data/site.json';
+import services from '../data/services.json';
+---
+<BaseLayout
+  title="Contact Stay Dry | Book a Damp Survey near Skipton"
+  description={`Book a low-cost damp survey or ask about damp, mould or damp proofing. Call or WhatsApp ${site.phoneDisplay}, or send an enquiry. Covering East Lancashire and North Yorkshire.`}
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Book a survey or ask a question"
+    lead={`Tell us about the problem and ${site.owner.split(' ')[0]} will get back to you. Prefer to talk? Call or WhatsApp any time.`}
+  />
+
+  <section class="section">
+    <div class="container contact-grid">
+      <!-- Enquiry form -->
+      <div class="form-card">
+        <h2>Send an enquiry</h2>
+        <p class="note">Fields marked <span class="req" aria-hidden="true">*</span> are required.</p>
+
+        <form class="enquiry-form" id="enquiry-form" method="post" action="#" data-form-live="false" novalidate>
+          <!-- Stage 4: set action to the form service's address and data-form-live="true" -->
+          <div class="form-row">
+            <div class="field">
+              <label for="f-name">Your name <span class="req" aria-hidden="true">*</span></label>
+              <input class="input" id="f-name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="f-role">I am a… <span class="req" aria-hidden="true">*</span></label>
+              <select class="select" id="f-role" name="role" required>
+                <option value="">Please choose</option>
+                <option value="landlord">Landlord or letting agent</option>
+                <option value="housing-association">Housing association</option>
+                <option value="homeowner">Homeowner</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="f-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+              <input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel" required />
+            </div>
+            <div class="field">
+              <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input class="input" id="f-email" name="email" type="email" autocomplete="email" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="f-address">Property address <span class="req" aria-hidden="true">*</span></label>
+              <input class="input" id="f-address" name="address" type="text" autocomplete="street-address" required />
+            </div>
+            <div class="field">
+              <label for="f-postcode">Postcode <span class="req" aria-hidden="true">*</span></label>
+              <input class="input" id="f-postcode" name="postcode" type="text" autocomplete="postal-code" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="f-service">What do you need help with?</label>
+            <select class="select" id="f-service" name="service">
+              <option value="">Not sure yet</option>
+              {services.map((s) => <option value={s.id}>{s.name}</option>)}
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="f-problem">Describe the problem <span class="req" aria-hidden="true">*</span></label>
+            <p class="hint" id="f-problem-hint">For example: black mould in the back bedroom, or a damp patch on the lounge wall that gets worse after rain.</p>
+            <textarea class="textarea" id="f-problem" name="problem" aria-describedby="f-problem-hint" required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="f-access">Access notes</label>
+            <p class="hint" id="f-access-hint">Landlords: your tenant's name and number so we can arrange a visit. Anyone: best days or times.</p>
+            <textarea class="textarea textarea--short" id="f-access" name="access" aria-describedby="f-access-hint"></textarea>
+          </div>
+
+          <p class="photo-tip"><Icon name="camera" /><span>Got photos? Send them by <a href={site.whatsappHref} target="_blank" rel="noopener">WhatsApp</a> after you've sent this form.</span></p>
+
+          <!-- Spam trap: hidden from people, bots tend to fill it in -->
+          <div class="hp" aria-hidden="true">
+            <label for="f-website">Leave this empty</label>
+            <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="field field--check">
+            <input id="f-consent" name="consent" type="checkbox" required />
+            <label for="f-consent">I agree to Stay Dry using these details to reply to my enquiry, as explained in the <a href="/privacy/">privacy notice</a>. <span class="req" aria-hidden="true">*</span></label>
+          </div>
+
+          <button class="btn btn-primary btn-lg" type="submit">Send enquiry <Icon name="arrow" /></button>
+
+          <div class="form-status" role="status" aria-live="polite" data-form-status hidden></div>
+        </form>
+      </div>
+
+      <!-- Other ways to get in touch -->
+      <aside class="contact-aside" aria-label="Other ways to get in touch">
+        <div class="contact-card">
+          <h2>Other ways to get in touch</h2>
+          <ul class="contact-list">
+            <li>
+              <a class="contact-method" href={site.phoneHref}>
+                <span class="icon-badge"><Icon name="phone" /></span>
+                <span><strong>Call</strong>{site.phoneDisplay}</span>
+              </a>
+            </li>
+            <li>
+              <a class="contact-method" href={site.whatsappHref} target="_blank" rel="noopener">
+                <span class="icon-badge icon-badge--whatsapp"><Icon name="chat" /></span>
+                <span><strong>WhatsApp</strong>Send a message and photos</span>
+              </a>
+            </li>
+            <li>
+              <a class="contact-method" href={site.emailHref}>
+                <span class="icon-badge"><Icon name="mail" /></span>
+                <span><strong>Email</strong>{site.email}</span>
+              </a>
+            </li>
+          </ul>
+          <p class="note"><span class="placeholder">[TO CONFIRM: usual hours or response times]</span></p>
+        </div>
+
+        <div class="contact-card">
+          <h3><Icon name="pin" />Areas we cover</h3>
+          <p>Based near Skipton, we mainly cover East Lancashire and North Yorkshire, including nearby Keighley and Bradford.</p>
+          <p>Towns include {site.areas}.</p>
+          <p class="note">Further afield? We're happy to travel. We just add a charge for the extra travel time.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('#enquiry-form');
+  if (form) {
+    // Pre-fill from links such as /contact/?service=rising-damp or /contact/?role=landlord
+    const params = new URLSearchParams(window.location.search);
+    const preset = (name: string) => {
+      const value = params.get(name);
+      const select = form.elements.namedItem(name);
+      if (value && select instanceof HTMLSelectElement && [...select.options].some((o) => o.value === value)) {
+        select.value = value;
+      }
+    };
+    preset('service');
+    preset('role');
+
+    // Until the form service is connected (Stage 4), don't try to send anything.
+    const status = form.querySelector<HTMLElement>('[data-form-status]');
+    form.addEventListener('submit', (event) => {
+      if (form.dataset.formLive === 'true') return;
+      event.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      if (status) {
+        status.hidden = false;
+        status.innerHTML =
+          '<strong>Online enquiries aren\'t switched on yet.</strong> Please call or WhatsApp us for now. Your details haven\'t been sent anywhere.';
+      }
+    });
+  }
+</script>
