@@ -396,6 +396,7 @@ a:hover { color: var(--purple-dark); text-decoration-thickness: 2px; }
   color: var(--text-muted); font-size: var(--step--1);
 }
 .photo-ph svg { width: 36px; height: 36px; color: var(--purple-light); }
+.path-photo { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
 
 /* How it works */
 .steps {
