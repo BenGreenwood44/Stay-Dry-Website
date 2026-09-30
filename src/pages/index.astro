@@ -12,6 +12,10 @@ const [accreditText, accreditTodo] = site.accreditation.split(/\s*(?=\[)/);
 // "Skipton, Settle, … Clitheroe and the Yorkshire Dales" → ["Skipton", …, "Yorkshire Dales"]
 const towns = site.areas.replace(' and ', ', ').split(', ').map((t) => t.replace(/^the /, ''));
 
+// Reviews section switch. Hidden (false) until Stay Dry has real reviews to show.
+// To bring it back: put the reviews into section 8 below, then change false to true.
+const showReviews = false;
+
 // Business details for Google (structured data). Stay Dry has no street address:
 // it's a service-area business, so only the town and the areas served are given.
 const siteUrl = Astro.site?.href ?? 'https://stay-dry.uk/';
@@ -216,7 +220,8 @@ const businessData = {
     </div>
   </section>
 
-  <!-- 8. Reviews (placeholder) -->
+  <!-- 8. Reviews (hidden until there are real reviews: see showReviews at the top) -->
+  {showReviews && (
   <section class="section section--tint">
     <div class="container">
       <div class="section-head section-head--center">
@@ -235,6 +240,7 @@ const businessData = {
       </div>
     </div>
   </section>
+  )}
 
   <!-- 9. Closing call to action -->
   <section class="section section--dark cta">
