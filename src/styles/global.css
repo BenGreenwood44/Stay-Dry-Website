@@ -501,6 +501,8 @@ a:hover { color: var(--purple-dark); text-decoration-thickness: 2px; }
 .value-band .icon-badge { width: 64px; height: 64px; margin: 0; }
 .value-band .icon-badge svg { width: 32px; height: 32px; }
 .value-band .lead { margin: 0; }
+/* Clickable trade badge: only the badge itself is clickable, not the whole row */
+.value-band .badge-link { justify-self: start; display: block; }
 
 /* FAQ accordion (works without JavaScript) */
 .faq { display: grid; gap: var(--space-3); }
