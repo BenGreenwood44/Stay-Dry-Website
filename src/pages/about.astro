@@ -81,16 +81,19 @@ const firstName = site.owner.split(' ')[0];
   <!-- Federation of Damp -->
   <section class="section section--tint">
     <div class="container value-band">
-      <picture>
-        <!-- Federation of Damp "Approved Member" badge, shown about 220px wide -->
-        <source srcset="/images/fod-approved-member.webp" type="image/webp" />
-        <img src="/images/fod-approved-member.png" alt="Federation of Damp Approved Member" width="220" height="88" loading="lazy" decoding="async" />
-      </picture>
+      <!-- Badge links to the owner's listing on the Federation of Damp register -->
+      <a href="https://federationofdamp.co.uk/find-a-specialist/MjIyNDI/" target="_blank" rel="noopener">
+        <picture>
+          <!-- Federation of Damp "Approved Member" badge, shown about 220px wide -->
+          <source srcset="/images/fod-approved-member.webp" type="image/webp" />
+          <img src="/images/fod-approved-member.png" alt={`Federation of Damp Approved Member: see ${firstName}'s listing on the register`} width="220" height="88" loading="lazy" decoding="async" />
+        </picture>
+      </a>
       <div>
         <h2>Approved member of the Federation of Damp</h2>
         <p class="lead">The Federation of Damp is a UK body that trains, certifies and vets damp, mould and waterproofing specialists, and keeps a public register of its members.</p>
         <p class="note">
-          Membership no. 20183 · <span class="placeholder">[TO CONFIRM: link to our register listing]</span>
+          Membership no. 20183 · <a href="https://federationofdamp.co.uk/find-a-specialist/MjIyNDI/" target="_blank" rel="noopener">See {firstName}'s listing on the Federation of Damp register</a>
           · <a href="https://federationofdamp.co.uk/" target="_blank" rel="noopener">federationofdamp.co.uk</a>
         </p>
       </div>
