@@ -48,8 +48,8 @@ const firstName = site.owner.split(' ')[0];
         </article>
         <article class="card">
           <span class="icon-badge"><Icon name="shield" /></span>
-          <h3>Vetted member</h3>
-          <p>A vetted member of the Federation of Damp.</p>
+          <h3>Approved member</h3>
+          <p>An approved member of the Federation of Damp.</p>
         </article>
         <article class="card">
           <span class="icon-badge"><Icon name="pin" /></span>
@@ -81,12 +81,16 @@ const firstName = site.owner.split(' ')[0];
   <!-- Federation of Damp -->
   <section class="section section--tint">
     <div class="container value-band">
-      <span class="icon-badge"><Icon name="shield" /></span>
+      <picture>
+        <!-- Federation of Damp "Approved Member" badge, shown about 220px wide -->
+        <source srcset="/images/fod-approved-member.webp" type="image/webp" />
+        <img src="/images/fod-approved-member.png" alt="Federation of Damp Approved Member" width="220" height="88" loading="lazy" decoding="async" />
+      </picture>
       <div>
-        <h2>Vetted member of the Federation of Damp</h2>
+        <h2>Approved member of the Federation of Damp</h2>
         <p class="lead">The Federation of Damp is a UK body that trains, certifies and vets damp, mould and waterproofing specialists, and keeps a public register of its members.</p>
         <p class="note">
-          Membership no. 20183 · <span class="placeholder">[TO CONFIRM: link to our register listing, member badge]</span>
+          Membership no. 20183 · <span class="placeholder">[TO CONFIRM: link to our register listing]</span>
           · <a href="https://federationofdamp.co.uk/" target="_blank" rel="noopener">federationofdamp.co.uk</a>
         </p>
       </div>
